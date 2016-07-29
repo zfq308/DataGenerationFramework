@@ -30,8 +30,6 @@ namespace DataGenerationFramework.Core
         {
             var nameGenerator = container.Resolve<IHumanDataGenerator>();
             List<string> fullName = new List<string>();
-
-
             switch (gender)
             {
                 case Gender.Male:
@@ -57,7 +55,6 @@ namespace DataGenerationFramework.Core
                     fullName.Add(nameGenerator.GenerateSurname());
                     break;
             }
-
             return string.Join(" ", fullName.ToArray());
         }
 

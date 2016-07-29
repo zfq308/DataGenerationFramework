@@ -225,10 +225,27 @@ namespace DataGenerationFramework.Core
 
     public enum EnumStringType
     {
-        ChineseName = 0,
-        ChinseHomeTown = 1,
-        ChineseLocationAddress = 2,
-        EnglishFirstName=3,
+        RandomString = 0,
+        RandomChineseString = 1,
+        HumanData_Name = 100,
+        HumanData_ChineseName = 101,
+        HumanData_ChineseLastName = 102,
+        HumanData_EmailAddress = 103,
+        HumanData_ChineseNation = 104,
+        HumanData_ChineseSchoolName = 105,
+        HumanData_ChineseMobileNumber = 106,
+        HumanData_ChineseRandomMobileNumber = 107,
+        HumanData_ChinesePersonalSigner = 108,
+
+        GEOData_Address = 200,
+        GEOData_ChineseAddress = 201,
+        GEOData_ChineseHomeTown = 202,
+
+        Business_ChineseCommodity = 300,
+        Business_ChineseCompanyName = 301,
+
+        Language_ChineseTwoWord = 400,
+        Language_ChineseFourWord = 401,
     }
 
     public class StringValueGenerator : PropertyValueGenerator
@@ -236,63 +253,81 @@ namespace DataGenerationFramework.Core
         private int _min;
         private int _max;
         private EnumStringType _stringtype;
+        private RepositoryGenerators gen = new RepositoryGenerators();
 
         public StringValueGenerator(PropertyInfo property)
             : base(property)
         {
         }
 
-        public StringValueGenerator UseMaxLength(int maxLength)
-        {
-            if (maxLength <= 0)
-                throw new ArgumentException();
-
-            _max = maxLength;
-            return this;
-        }
-
-        public StringValueGenerator UseMinLength(int minLength)
-        {
-            if (minLength < 0)
-                throw new ArgumentException();
-
-            _min = minLength;
-            return this;
-        }
-
-        public StringValueGenerator SetStringTypeEnum(EnumStringType stringtype)
+        public StringValueGenerator SetStringTypeEnum(EnumStringType stringtype, int minLength = 0, int maxLength = 0)
         {
             _stringtype = stringtype;
+            if(stringtype== EnumStringType.RandomString || stringtype == EnumStringType.RandomChineseString)
+            {
+                if (minLength < 0 || maxLength <= 0 || minLength> maxLength)
+                {
+                    throw new ArgumentException();
+                }
+                else
+                {
+                    _min = minLength;
+                    _max = maxLength;
+                    return this;
+                }
+            }
             return this;
         }
-
 
         protected override object GenerateValue()
         {
-            int len = Random.Next(_min, _max);
-
-            String chars = "qwertzuiopasdfghjklyxcvbnmQWERTZUIOPSDFGHJKLYXCVBNM;:123<>0§456789ç%&/()=?`!èà£à-.¨,$äöé_:;";
-
-
             switch (_stringtype)
             {
-                case EnumStringType.ChineseName:
-                    break;
-                case EnumStringType.ChinseHomeTown:
-                    break;
-                case EnumStringType.ChineseLocationAddress:
-                    break;
+                case EnumStringType.RandomString:
+                    String chars = "qwertzuiopasdfghjklyxcvbnmQWERTZUIOPSDFGHJKLYXCVBNM;:123<>0§456789ç%&/()=?`!èà£à-.¨,$äöé_:;";
+                    return new string(Enumerable.Repeat(chars, Random.Next(_min, _max))
+                       .Select(s => s[Random.Next(chars.Length)])
+                       .ToArray());
+                case EnumStringType.RandomChineseString:
+                    String Chinesechars = CommonData.Chinesechars;
+                    return new string(Enumerable.Repeat(Chinesechars, Random.Next(_min, _max))
+                       .Select(s => s[Random.Next(Chinesechars.Length)])
+                       .ToArray());
+                case EnumStringType.HumanData_Name:
+                    return gen.GetHumanData_Name(Gender.Male);
+                case EnumStringType.HumanData_ChineseName:
+                    return gen.GetHumanData_ChineseName();
+                case EnumStringType.HumanData_ChineseLastName:
+                    return gen.GetHumanData_ChineseLastName();
+                case EnumStringType.HumanData_EmailAddress:
+                    return gen.GetHumanData_EmailAddress();
+                case EnumStringType.HumanData_ChineseNation:
+                    return gen.GetHumanData_ChineseNation();
+                case EnumStringType.HumanData_ChineseSchoolName:
+                    return gen.GetHumanData_ChineseSchoolName();
+                case EnumStringType.HumanData_ChineseMobileNumber:
+                    return gen.GetHumanData_ChineseMobileNumber();
+                case EnumStringType.HumanData_ChineseRandomMobileNumber:
+                    return gen.GetHumanData_ChineseRandomMobileNumber();
+                case EnumStringType.HumanData_ChinesePersonalSigner:
+                    return gen.GetHumanData_ChinesePersonalSigner();
+                case EnumStringType.GEOData_Address:
+                    return gen.GetGEOData_Address();
+                case EnumStringType.GEOData_ChineseAddress:
+                    return gen.GetGEOData_ChineseAddress();
+                case EnumStringType.GEOData_ChineseHomeTown:
+                    return gen.GetGEOData_ChineseHomeTown();
+                case EnumStringType.Business_ChineseCommodity:
+                    return gen.GetBusiness_ChineseCommodity();
+                case EnumStringType.Business_ChineseCompanyName:
+                    return gen.GetBusiness_ChineseCompanyName();
+                case EnumStringType.Language_ChineseTwoWord:
+                    return gen.GetLanguage_ChineseTwoWord();
+                case EnumStringType.Language_ChineseFourWord:
+                    return gen.GetLanguage_ChineseFourWord();
                 default:
-                    break;
+                    return "";
             }
-
-            var result = new string(
-                Enumerable.Repeat(chars, len)
-                          .Select(s => s[Random.Next(chars.Length)])
-                          .ToArray());
-
-
-            return result;
         }
     }
 
@@ -533,8 +568,6 @@ namespace DataGenerationFramework.Core
             {
                 _generators.Add(t, new DataGenerator<T>());
             }
-
-
             return (DataGenerator<T>)_generators[t];
         }
 
