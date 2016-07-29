@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using DataGenerationFramework.Core;
 using Moq;
+using DataGenerationFramework.Core.GeneratorDataByRepository;
 
 namespace DataGenerationFramework.CoreTests
 {
@@ -17,8 +18,6 @@ namespace DataGenerationFramework.CoreTests
             //Arrange
             var expected = "Red Wood Lane";
             var repositoryMock = new Mock<IAddressRepository>();
-            repositoryMock.Setup(o => o.GetAdjectives()).Returns(new List<string>() { "Red" });
-            repositoryMock.Setup(o => o.GetNouns()).Returns(new List<string>() { "Wood" });
             repositoryMock.Setup(o => o.GetStreetTypes()).Returns(new List<string>() { "Lane" });
 
             var generator = new AddressGenerator(repositoryMock.Object);

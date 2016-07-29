@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using DataGenerationFramework.Core;
+using DataGenerationFramework.Core.GeneratorDataByRepository;
 
 namespace DataGenerationFramework.CoreTests
 {
@@ -13,7 +14,7 @@ namespace DataGenerationFramework.CoreTests
         public void GetMaleNamesTest()
         {
             //Assemble
-            var target = new NameRepository();
+            var target = new HumanDataRepository();
             int actual;
             //Act
             actual = target.GetMaleNames().Count;
@@ -26,7 +27,7 @@ namespace DataGenerationFramework.CoreTests
         public void GetFemaleNamesTest()
         {
             //Assemble
-            var target = new NameRepository();
+            var target = new HumanDataRepository();
             int actual;
             //Act
             actual = target.GetFemaleNames().Count;
@@ -39,7 +40,7 @@ namespace DataGenerationFramework.CoreTests
         public void GetSurnamesTest()
         {
             //Assemble
-            var target = new NameRepository();
+            var target = new HumanDataRepository();
             int actual;
             //Act
             actual = target.GetSurnames().Count;
@@ -53,7 +54,7 @@ namespace DataGenerationFramework.CoreTests
         public void GetMaleTitlesTest()
         {
             //Assemble
-            var target = new NameRepository();
+            var target = new HumanDataRepository();
             int actual;
             //Act
             actual = target.GetMaleTitles().Count;
@@ -67,7 +68,7 @@ namespace DataGenerationFramework.CoreTests
         public void GetFemaleTitlesTest()
         {
             //Assemble
-            var target = new NameRepository();
+            var target = new HumanDataRepository();
             int actual;
             //Act
             actual = target.GetFemaleTitles().Count;
@@ -81,7 +82,7 @@ namespace DataGenerationFramework.CoreTests
         public void GetTitlesTest()
         {
             //Assemble
-            var target = new NameRepository();
+            var target = new HumanDataRepository();
             int actual;
             //Act
             actual = target.GetTitles().Count;
@@ -95,7 +96,7 @@ namespace DataGenerationFramework.CoreTests
         public void GetSuffixesTest()
         {
             //Assemble
-            var target = new NameRepository();
+            var target = new HumanDataRepository();
             int actual;
             //Act
             actual = target.GetSuffixes().Count;

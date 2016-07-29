@@ -30,39 +30,82 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\CommonServiceLocator.1.3\lib\portable-net4+sl5+netcore45+wpa81+wp8\Microsoft.Practices.ServiceLocation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.4.0.1\lib\net45\Microsoft.Practices.Unity.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Configuration, Version=4.0.0.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.4.0.1\lib\net45\Microsoft.Practices.Unity.Configuration.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.RegistrationByConvention, Version=4.0.0.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.4.0.1\lib\net45\Microsoft.Practices.Unity.RegistrationByConvention.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GeneratorDataByRepository.cs" />
+    <Compile Include="GeneratorDataByRepository\RepositoryForBusiness.cs" />
+    <Compile Include="GeneratorDataByRepository\RepositoryForGEO.cs" />
+    <Compile Include="GeneratorDataByRepository\RepositoryForHumanData.cs" />
+    <Compile Include="GeneratorDataByRepository\RepositoryForLanguage.cs" />
+    <Compile Include="RepositoryGenerators.cs" />
     <Compile Include="Utils\EnumerableExtensions.cs" />
     <Compile Include="Utils\FileHandler.cs" />
-    <Compile Include="CommonData.cs" />
-    <Compile Include="RandomHelper.cs" />
-    <Compile Include="RandomParagraphGeneratorHelper.cs" />
+    <Compile Include="Other\CommonData.cs" />
+    <Compile Include="Other\RandomHelper.cs" />
+    <Compile Include="Other\RandomParagraphGeneratorHelper.cs" />
     <Compile Include="Utils\Storage.cs" />
     <Compile Include="Utils\StopWatch2.cs" />
     <None Include="Other\XXX.cs" />
     <Compile Include="ReflectionDataGenerate.cs" />
     <Compile Include="Other\generator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Data\FemaleNames.txt" />
-    <EmbeddedResource Include="Data\FemaleTitles.txt" />
-    <EmbeddedResource Include="Data\GenericTitles.txt" />
-    <EmbeddedResource Include="Data\MaleNames.txt" />
-    <EmbeddedResource Include="Data\MaleTitles.txt" />
-    <EmbeddedResource Include="Data\Suffixes.txt" />
-    <EmbeddedResource Include="Data\Surnames.txt" />
+    <EmbeddedResource Include="Data\HumanData\FemaleNames.txt" />
+    <EmbeddedResource Include="Data\HumanData\FemaleTitles.txt" />
+    <EmbeddedResource Include="Data\HumanData\GenericTitles.txt" />
+    <EmbeddedResource Include="Data\HumanData\MaleNames.txt" />
+    <EmbeddedResource Include="Data\HumanData\MaleTitles.txt" />
+    <EmbeddedResource Include="Data\HumanData\Suffixes.txt" />
+    <EmbeddedResource Include="Data\HumanData\Surnames.txt" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Data\Adjectives.txt" />
-    <EmbeddedResource Include="Data\Nouns.txt" />
-    <EmbeddedResource Include="Data\StreetTypes.txt" />
-    <EmbeddedResource Include="Data\SubAddress.txt" />
-    <EmbeddedResource Include="Data\ZipCodes.txt" />
+    <EmbeddedResource Include="Data\Language\Adjectives.txt" />
+    <EmbeddedResource Include="Data\Language\Nouns.txt" />
+    <EmbeddedResource Include="Data\GEO\StreetTypes.txt" />
+    <EmbeddedResource Include="Data\GEO\SubAddress.txt" />
+    <EmbeddedResource Include="Data\GEO\ZipCodes.txt" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Data\HumanData\ChineseLastName.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Data\Language\ChineseTwoWords.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Data\HumanData\PersonalSigner.txt" />
+    <EmbeddedResource Include="Data\HumanData\ChineseSchoolName.txt" />
+    <EmbeddedResource Include="Data\Business\ChineseCommodities.txt" />
+    <EmbeddedResource Include="Data\Business\ChineseCompanyName.txt" />
+    <EmbeddedResource Include="Data\HumanData\ChineseNation.txt" />
+    <EmbeddedResource Include="Data\GEO\ChineseHomeTown.txt" />
+    <EmbeddedResource Include="Data\HumanData\MobileFullNumber.txt" />
+    <EmbeddedResource Include="Data\HumanData\MobilePreFix.txt" />
+    <Content Include="Data\Readme.txt" />
+    <EmbeddedResource Include="Data\HumanData\Email.txt" />
+    <EmbeddedResource Include="Data\HumanData\ChineseName.txt" />
+    <EmbeddedResource Include="Data\GEO\ChineseAddress.txt" />
+    <EmbeddedResource Include="Data\Language\ChineseFourWords.txt" />
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

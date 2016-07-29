@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using DataGenerationFramework.Core;
+using DataGenerationFramework.Core.GeneratorDataByRepository;
 
 namespace DataGenerationFramework.CoreTests
 {
@@ -16,10 +17,10 @@ namespace DataGenerationFramework.CoreTests
         {
             //Arrange
             var expected = "Jane";
-            var repositoryMock = new Mock<INameRepository>();
+            var repositoryMock = new Mock<IHumanDataRepository>();
             repositoryMock.Setup(o => o.GetFemaleNames()).Returns(new List<string>() { expected });
 
-            var generator = new NameGenerator(repositoryMock.Object);
+            var generator = new HumanDataGenerator(repositoryMock.Object);
             //Act
             var actual = generator.GenerateFemaleName().ToString();
             //Assert
@@ -32,11 +33,11 @@ namespace DataGenerationFramework.CoreTests
         {
             //Arrange
             var expected = "Miss";
-            var repositoryMock = new Mock<INameRepository>();
+            var repositoryMock = new Mock<IHumanDataRepository>();
             repositoryMock.Setup(o => o.GetFemaleTitles()).Returns(new List<string>() { expected });
             repositoryMock.Setup(o => o.GetTitles()).Returns(new List<string>());
 
-            var generator = new NameGenerator(repositoryMock.Object);
+            var generator = new HumanDataGenerator(repositoryMock.Object);
             //Act
             var actual = generator.GenerateFemaleTitle();
             //Assert
@@ -49,10 +50,10 @@ namespace DataGenerationFramework.CoreTests
         {
             //Arrange
             var expected = "John";
-            var repositoryMock = new Mock<INameRepository>();
+            var repositoryMock = new Mock<IHumanDataRepository>();
             repositoryMock.Setup(o => o.GetMaleNames()).Returns(new List<string>() { expected });
 
-            var generator = new NameGenerator(repositoryMock.Object);
+            var generator = new HumanDataGenerator(repositoryMock.Object);
             //Act
             var actual = generator.GenerateMaleName();
             //Assert
@@ -65,11 +66,11 @@ namespace DataGenerationFramework.CoreTests
         {
             //Arrange
             var expected = "Mr.";
-            var repositoryMock = new Mock<INameRepository>();
+            var repositoryMock = new Mock<IHumanDataRepository>();
             repositoryMock.Setup(o => o.GetMaleTitles()).Returns(new List<string>() { expected });
             repositoryMock.Setup(o => o.GetTitles()).Returns(new List<string>());
 
-            var generator = new NameGenerator(repositoryMock.Object);
+            var generator = new HumanDataGenerator(repositoryMock.Object);
             //Act
             var actual = generator.GenerateMaleTitle();
             //Assert
@@ -82,10 +83,10 @@ namespace DataGenerationFramework.CoreTests
         {
             //Arrange
             var expected = "MBA";
-            var repositoryMock = new Mock<INameRepository>();
+            var repositoryMock = new Mock<IHumanDataRepository>();
             repositoryMock.Setup(o => o.GetSuffixes()).Returns(new List<string>() { expected });
 
-            var generator = new NameGenerator(repositoryMock.Object);
+            var generator = new HumanDataGenerator(repositoryMock.Object);
             //Act
             var actual = generator.GenerateSuffix();
             //Assert
@@ -98,10 +99,10 @@ namespace DataGenerationFramework.CoreTests
         {
             //Arrange
             var expected = "Smith";
-            var repositoryMock = new Mock<INameRepository>();
+            var repositoryMock = new Mock<IHumanDataRepository>();
             repositoryMock.Setup(o => o.GetSurnames()).Returns(new List<string>() { expected });
 
-            var generator = new NameGenerator(repositoryMock.Object);
+            var generator = new HumanDataGenerator(repositoryMock.Object);
             //Act
             var actual = generator.GenerateSurname();
             //Assert
@@ -114,14 +115,14 @@ namespace DataGenerationFramework.CoreTests
         {
             //Arrange
             var expected = "Ms. Jane Jane Smith MBA";
-            var repositoryMock = new Mock<INameRepository>();
+            var repositoryMock = new Mock<IHumanDataRepository>();
             repositoryMock.Setup(o => o.GetFemaleNames()).Returns(new List<string>() { "Jane" });
             repositoryMock.Setup(o => o.GetFemaleTitles()).Returns(new List<string>() { "Ms." });
             repositoryMock.Setup(o => o.GetTitles()).Returns(new List<string>());
             repositoryMock.Setup(o => o.GetSurnames()).Returns(new List<string>() { "Smith" });
             repositoryMock.Setup(o => o.GetSuffixes()).Returns(new List<string>() { "MBA" });
 
-            var generator = new NameGenerator(repositoryMock.Object);
+            var generator = new HumanDataGenerator(repositoryMock.Object);
             //Act
             var actual = generator.GenerateFullName(Gender.Female);
             //Assert
@@ -134,14 +135,14 @@ namespace DataGenerationFramework.CoreTests
         {
             //Arrange
             var expected = "Sir John John Smith MBA";
-            var repositoryMock = new Mock<INameRepository>();
+            var repositoryMock = new Mock<IHumanDataRepository>();
             repositoryMock.Setup(o => o.GetMaleNames()).Returns(new List<string>() { "John" });
             repositoryMock.Setup(o => o.GetMaleTitles()).Returns(new List<string>() { "Sir" });
             repositoryMock.Setup(o => o.GetTitles()).Returns(new List<string>());
             repositoryMock.Setup(o => o.GetSurnames()).Returns(new List<string>() { "Smith" });
             repositoryMock.Setup(o => o.GetSuffixes()).Returns(new List<string>() { "MBA" });
 
-            var generator = new NameGenerator(repositoryMock.Object);
+            var generator = new HumanDataGenerator(repositoryMock.Object);
             //Act
             var actual = generator.GenerateFullName(Gender.Male);
             //Assert
