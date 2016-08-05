@@ -221,8 +221,6 @@ namespace DataGenerationFramework.Core
         }
     }
 
-
-
     public enum EnumStringType
     {
         RandomString = 0,
@@ -263,9 +261,9 @@ namespace DataGenerationFramework.Core
         public StringValueGenerator SetStringTypeEnum(EnumStringType stringtype, int minLength = 0, int maxLength = 0)
         {
             _stringtype = stringtype;
-            if(stringtype== EnumStringType.RandomString || stringtype == EnumStringType.RandomChineseString)
+            if (stringtype == EnumStringType.RandomString || stringtype == EnumStringType.RandomChineseString)
             {
-                if (minLength < 0 || maxLength <= 0 || minLength> maxLength)
+                if (minLength < 0 || maxLength <= 0 || minLength > maxLength)
                 {
                     throw new ArgumentException();
                 }
@@ -423,6 +421,7 @@ namespace DataGenerationFramework.Core
 
             return gen;
         }
+
     }
 
     internal static class ExpressionUtil
@@ -561,14 +560,14 @@ namespace DataGenerationFramework.Core
     {
         static readonly Dictionary<Type, DataGenerator> _generators = new Dictionary<Type, DataGenerator>();
 
-        public static DataGenerator<T> ForClass<T>()
+        public static DataGenerator<T1> ForClass<T1>()
         {
-            Type t = typeof(T);
+            Type t = typeof(T1);
             if (!_generators.ContainsKey(t))
             {
-                _generators.Add(t, new DataGenerator<T>());
+                _generators.Add(t, new DataGenerator<T1>());
             }
-            return (DataGenerator<T>)_generators[t];
+            return (DataGenerator<T1>)_generators[t];
         }
 
         public static IEnumerable<T> Items<T>(int count) where T : new()

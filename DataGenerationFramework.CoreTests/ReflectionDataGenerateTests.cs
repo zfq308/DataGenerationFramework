@@ -14,6 +14,15 @@ namespace DataGenerationFramework.Core.Tests
         public DateTime Date { get; set; }
         public DateTime DateOnly { get; set; }
 
+        public Enum_Test EnumValue { get; set; }
+    }
+
+    public enum Enum_Test
+    {
+        A=101,
+        B=301,
+        C=201,
+        D=401,
     }
 
     [TestClass()]
@@ -31,6 +40,10 @@ namespace DataGenerationFramework.Core.Tests
             ReflectionDataGenerate.ForClass<testclass>().Property(f => f.DateOnly).Range(DateTime.Now.AddDays(-100), DateTime.Now.AddDays(150)).DateOnly(true);
 
             var items = ReflectionDataGenerate.Items<testclass>(500);
+            foreach (var item in items)
+            {
+                item.EnumValue = RandomHelper.GetEnum<Enum_Test>();
+            }
         }
     }
 }

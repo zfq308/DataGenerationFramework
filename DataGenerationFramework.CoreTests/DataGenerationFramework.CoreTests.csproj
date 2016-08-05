@@ -63,6 +63,7 @@
     <Compile Include="ExtensionMethodsTests.cs" />
     <Compile Include="NameGeneratorTest.cs" />
     <Compile Include="NameRepositoryTest.cs" />
+    <Compile Include="Other\RandomHelperTests.cs" />
     <Compile Include="Other\RandomTextTests.cs" />
     <Compile Include="RandomDataTests.cs" />
     <Compile Include="RandomTextTest.cs" />

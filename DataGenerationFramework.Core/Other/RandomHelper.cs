@@ -161,8 +161,6 @@ namespace DataGenerationFramework.Core
 
 
 
-
-
         public static string GetCoordinate()
         {
             return GetDouble(-90.0, 90.0) + "," + GetDouble(-180.0, 180.0);
@@ -217,7 +215,14 @@ namespace DataGenerationFramework.Core
         }
 
 
-
+        public static T GetListElement<T>(List<T> List)
+        {
+            if(List!=null && List.Count>0)
+            {
+                return List[GetInt(0, _words.Length - 1)];
+            }
+            return default(T);
+        }
 
 
         public static bool GetBool(int chance = 50)
