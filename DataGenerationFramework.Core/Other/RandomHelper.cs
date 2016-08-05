@@ -219,7 +219,7 @@ namespace DataGenerationFramework.Core
         {
             if(List!=null && List.Count>0)
             {
-                return List[GetInt(0, _words.Length - 1)];
+                return List[GetInt(0, List.Count - 1)];
             }
             return default(T);
         }

@@ -282,7 +282,7 @@ namespace DataGenerationFramework.Core
             switch (_stringtype)
             {
                 case EnumStringType.RandomString:
-                    String chars = "qwertzuiopasdfghjklyxcvbnmQWERTZUIOPSDFGHJKLYXCVBNM;:123<>0§456789ç%&/()=?`!èà£à-.¨,$äöé_:;";
+                    String chars = "qwertzuiopasdfghjklyxcvbnmQWERTZUIOPSDFGHJKLYXCVBNM1230456789";
                     return new string(Enumerable.Repeat(chars, Random.Next(_min, _max))
                        .Select(s => s[Random.Next(chars.Length)])
                        .ToArray());
