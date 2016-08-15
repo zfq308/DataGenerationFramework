@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>Benjamin Zhou</authors>
+    <owners>Benjamin Zhou</owners>
+    <licenseUrl>http://www.apache.org/licenses/LICENSE-2.0.html</licenseUrl>
+    <projectUrl>https://github.com/zfq308/DataGenerationFramework</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>The solution for Chinese random data generation.</description>
+    <releaseNotes>Init publish the package</releaseNotes>
+    <copyright>Copyright 2016</copyright>
+  </metadata>
+</package>

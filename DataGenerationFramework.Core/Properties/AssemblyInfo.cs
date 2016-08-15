@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("DataGenerationFramework.Core")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("The solution for Chinese random data generation.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("DataGenerationFramework.Core")]
