@@ -93,24 +93,28 @@ namespace DataGenerationFramework.Core.GeneratorDataByRepository
         public string GenerateNoun()
         {
             var items = _repository.GetNouns();
+            Random r = new Random();
             return items[r.Next(0, items.Count)];
         }
 
         public string GenerateAdjective()
         {
             var items = _repository.GetAdjectives();
+            Random r = new Random();
             return items[r.Next(0, items.Count)];
         }
 
         public string GenerateChineseTwoWord()
         {
             var items = _repository.GetChineseTwoWords();
+            Random r = new Random();
             return items[r.Next(0, items.Count)];
         }
 
         public string GenerateChineseFourWord()
         {
             var items = _repository.GetChineseFourWords();
+            Random r = new Random();
             return items[r.Next(0, items.Count)];
         }
     }

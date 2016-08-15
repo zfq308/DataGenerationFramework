@@ -70,12 +70,14 @@ namespace DataGenerationFramework.Core.GeneratorDataByRepository
         public string GenerateChineseCommodity()
         {
             var items = _repository.ChineseCommodities();
+            Random r = new Random();
             return items[r.Next(0, items.Count)];
         }
 
         public string GenerateChineseCompanyName()
         {
             var items = _repository.ChineseCompanyName();
+            Random r = new Random();
             return items[r.Next(0, items.Count)];
         }
     }
