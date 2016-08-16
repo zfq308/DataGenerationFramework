@@ -21,6 +21,15 @@ namespace DataGenerationFramework.Core
 
         #endregion
 
+
+
+        public static Random GenNewRandomSeed()
+        {
+            long tick = DateTime.Now.Ticks;
+            return new Random((int)(tick & 0xffffffffL) | (int)(tick >> 32));
+        }
+
+
         #region 字典
 
         private const string DEFAULT_ALPHA_CHARS = "abcdefghjkmnpqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ";

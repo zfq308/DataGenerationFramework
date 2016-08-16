@@ -9,7 +9,7 @@ namespace DataGenerationFramework.Core
     public class RepositoryGenerators
     {
         private IUnityContainer container;
-        private Random r = new Random();
+        private Random r = RandomHelper.GenNewRandomSeed();
 
         public RepositoryGenerators()
         {

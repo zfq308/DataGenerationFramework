@@ -153,7 +153,6 @@ namespace DataGenerationFramework.Core.GeneratorDataByRepository
     public class HumanDataGenerator : IHumanDataGenerator
     {
         private IHumanDataRepository _nameRepository;
-        private Random r = new Random();
 
         public HumanDataGenerator(IHumanDataRepository nameRepository)
         {
@@ -165,7 +164,7 @@ namespace DataGenerationFramework.Core.GeneratorDataByRepository
         public string GenerateFemaleName()
         {
             var names = _nameRepository.GetFemaleNames();
-            Random r = new Random();
+            Random r = RandomHelper.GenNewRandomSeed();
             return names[r.Next(0, names.Count)];
         }
 
@@ -174,14 +173,14 @@ namespace DataGenerationFramework.Core.GeneratorDataByRepository
             var names = _nameRepository.GetFemaleTitles();
             names.AddRange(_nameRepository.GetTitles());
 
-            Random r = new Random();
+            Random r = RandomHelper.GenNewRandomSeed();
             return names[r.Next(0, names.Count)];
         }
 
         public string GenerateMaleName()
         {
             var names = _nameRepository.GetMaleNames();
-            Random r = new Random();
+            Random r = RandomHelper.GenNewRandomSeed();
             return names[r.Next(0, names.Count)];
         }
 
@@ -189,21 +188,21 @@ namespace DataGenerationFramework.Core.GeneratorDataByRepository
         {
             var names = _nameRepository.GetMaleTitles();
             names.AddRange(_nameRepository.GetTitles());
-            Random r = new Random();
+            Random r = RandomHelper.GenNewRandomSeed();
             return names[r.Next(0, names.Count)];
         }
 
         public string GenerateSurname()
         {
             var names = _nameRepository.GetSurnames();
-            Random r = new Random();
+            Random r = RandomHelper.GenNewRandomSeed();
             return names[r.Next(0, names.Count)];
         }
 
         public string GenerateSuffix()
         {
             var names = _nameRepository.GetSuffixes();
-            Random r = new Random();
+            Random r = RandomHelper.GenNewRandomSeed();
             return names[r.Next(0, names.Count)];
         }
 
@@ -231,62 +230,62 @@ namespace DataGenerationFramework.Core.GeneratorDataByRepository
 
             return string.Format("{0} {1} {2} {3} {4}", title, firstName, middleName, lastName, suffix);
         }
-        
+
         #endregion
 
         public string GenerateChineseName()
         {
             var names = _nameRepository.GetChineseNames();
-            Random r = new Random();
+            Random r = RandomHelper.GenNewRandomSeed();
             return names[r.Next(0, names.Count)];
         }
 
         public string GenerateChineseLastName()
         {
             var names = _nameRepository.GetChineseLastNames();
-            Random r = new Random();
+            Random r = RandomHelper.GenNewRandomSeed();
             return names[r.Next(0, names.Count)];
         }
 
         public string GenerateEmail()
         {
             var EmailProvides = _nameRepository.GetEmailProvides();
-            Random r = new Random();
+            Random r = RandomHelper.GenNewRandomSeed();
             return EmailProvides[r.Next(0, EmailProvides.Count)];
         }
 
         public string GenerateChineseNationName()
         {
             var ChineseNations = _nameRepository.GetChineseNations();
-            Random r = new Random();
+            Random r = RandomHelper.GenNewRandomSeed();
             return ChineseNations[r.Next(0, ChineseNations.Count)];
         }
 
         public string GenerateChineseSchoolName()
         {
             var list = _nameRepository.GetChineseSchools();
-            Random r = new Random();
+            Random r = RandomHelper.GenNewRandomSeed();
             return list[r.Next(0, list.Count)];
         }
 
         public string GenerateChineseMobileNumber()
         {
             var list = _nameRepository.GetChineseMobiles();
-            Random r = new Random();
+            Random r = RandomHelper.GenNewRandomSeed();
             return list[r.Next(0, list.Count)];
         }
 
         public string GenerateChineseMobilePrefix()
         {
             var list = _nameRepository.GetChineseMobilePreFix();
-            Random r = new Random();
+            Random r = RandomHelper.GenNewRandomSeed();
             return list[r.Next(0, list.Count)];
         }
 
         public string GenerateChinesePersonalSigner()
         {
             var list = _nameRepository.GetChinesePersonalSigner();
-            Random r = new Random();
+            Random r = RandomHelper.GenNewRandomSeed();
             return list[r.Next(0, list.Count)];
         }
     }

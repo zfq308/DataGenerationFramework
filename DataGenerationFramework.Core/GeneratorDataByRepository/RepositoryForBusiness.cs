@@ -60,7 +60,6 @@ namespace DataGenerationFramework.Core.GeneratorDataByRepository
     public class BusinessGenerator : IBusinessGenerator
     {
         private IBusinessRepository _repository;
-        private Random r = new Random();
 
         public BusinessGenerator(IBusinessRepository repository)
         {
@@ -70,14 +69,14 @@ namespace DataGenerationFramework.Core.GeneratorDataByRepository
         public string GenerateChineseCommodity()
         {
             var items = _repository.ChineseCommodities();
-            Random r = new Random();
+            Random r=  RandomHelper.GenNewRandomSeed();
             return items[r.Next(0, items.Count)];
         }
 
         public string GenerateChineseCompanyName()
         {
             var items = _repository.ChineseCompanyName();
-            Random r = new Random();
+            Random r=  RandomHelper.GenNewRandomSeed();
             return items[r.Next(0, items.Count)];
         }
     }

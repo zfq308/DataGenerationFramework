@@ -107,7 +107,6 @@ namespace DataGenerationFramework.Core.GeneratorDataByRepository
     public class AddressGenerator : IAddressGenerator
     {
         private IAddressRepository _repository;
-        private Random r = new Random();
 
         public AddressGenerator(IAddressRepository repository)
         {
@@ -117,7 +116,7 @@ namespace DataGenerationFramework.Core.GeneratorDataByRepository
         public string GenerateCity()
         {
             var items = _repository.GetZipCodeInfo();
-            Random r = new Random();
+            Random r=  RandomHelper.GenNewRandomSeed();
             var item = items[r.Next(0, items.Count)].Split(',');
             return item[1].Trim();
         }
@@ -125,7 +124,7 @@ namespace DataGenerationFramework.Core.GeneratorDataByRepository
         public string GenerateState()
         {
             var items = _repository.GetZipCodeInfo();
-            Random r = new Random();
+            Random r=  RandomHelper.GenNewRandomSeed();
 
             var item = items[r.Next(0, items.Count)].Split(',');
 
@@ -135,7 +134,7 @@ namespace DataGenerationFramework.Core.GeneratorDataByRepository
         public string GenerateCounty()
         {
             var items = _repository.GetZipCodeInfo();
-            Random r = new Random();
+            Random r=  RandomHelper.GenNewRandomSeed();
             var item = items[r.Next(0, items.Count)].Split(',');
 
             return item[3].Trim();
@@ -144,7 +143,7 @@ namespace DataGenerationFramework.Core.GeneratorDataByRepository
         public string GenerateZipcode()
         {
             var items = _repository.GetZipCodeInfo();
-            Random r = new Random();
+            Random r=  RandomHelper.GenNewRandomSeed();
             var item = items[r.Next(0, items.Count)].Split(',');
 
             return item[0].Trim();
@@ -153,7 +152,7 @@ namespace DataGenerationFramework.Core.GeneratorDataByRepository
         public string GenerateCombinedZipInfo()
         {
             var items = _repository.GetZipCodeInfo();
-            Random r = new Random();
+            Random r=  RandomHelper.GenNewRandomSeed();
             var item = items[r.Next(0, items.Count)].Split(',');
 
             return string.Format("{0}\r\n{1}, {2} {3}", item[3].Trim(), item[1].Trim(), item[2].Trim(), item[0].Trim());
@@ -161,41 +160,41 @@ namespace DataGenerationFramework.Core.GeneratorDataByRepository
 
         public string GenerateStreetNumber()
         {
-            Random r = new Random();
+            Random r=  RandomHelper.GenNewRandomSeed();
             return r.Next(0, 10000).ToString();
         }
 
         public string GenerateStreetName()
         {
             var types = _repository.GetStreetTypes();
-            Random r = new Random();
+            Random r=  RandomHelper.GenNewRandomSeed();
             return string.Format("{0}", types[r.Next(0, types.Count)]);
         }
 
         public string GenerateSubType()
         {
             var items = _repository.GetSubTypes();
-            Random r = new Random();
+            Random r=  RandomHelper.GenNewRandomSeed();
             return items[r.Next(0, items.Count)];
         }
 
         public string GenerateSubNumber()
         {
-            Random r = new Random();
+            Random r=  RandomHelper.GenNewRandomSeed();
             return r.Next(0, 100).ToString();
         }
 
         public string GenerateChineseAddress()
         {
             var items = _repository.GetChineseAddress();
-            Random r = new Random();
+            Random r=  RandomHelper.GenNewRandomSeed();
             return items[r.Next(0, items.Count)];
         }
 
         public string GenerateChineseHomeTowns()
         {
             var items = _repository.GetChineseHomeTown();
-            Random r = new Random();
+            Random r=  RandomHelper.GenNewRandomSeed();
             return items[r.Next(0, items.Count)];
         }
     }
