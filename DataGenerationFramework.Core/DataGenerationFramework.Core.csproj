@@ -117,6 +117,7 @@
     <EmbeddedResource Include="Data\GEO\ChineseHomeTown.txt" />
     <EmbeddedResource Include="Data\HumanData\MobileFullNumber.txt" />
     <EmbeddedResource Include="Data\HumanData\MobilePreFix.txt" />
+    <EmbeddedResource Include="Data\HumanData\ChineseJob.txt" />
     <Content Include="Data\Readme.txt" />
     <EmbeddedResource Include="Data\HumanData\Email.txt" />
     <EmbeddedResource Include="Data\HumanData\ChineseName.txt" />

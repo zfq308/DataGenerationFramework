@@ -26,6 +26,7 @@ namespace DataGenerationFramework.Core.GeneratorDataByRepository
         List<string> GetChineseMobiles();
         List<string> GetChineseMobilePreFix();
         List<string> GetChinesePersonalSigner();
+        List<string> GetChineseJob();
     }
 
     public class HumanDataRepository : IHumanDataRepository
@@ -129,6 +130,11 @@ namespace DataGenerationFramework.Core.GeneratorDataByRepository
         {
             return LoadList("PersonalSigner");
         }
+
+        public List<string> GetChineseJob()
+        {
+            return LoadList("ChineseJob");
+        }
     }
 
     public interface IHumanDataGenerator
@@ -147,6 +153,7 @@ namespace DataGenerationFramework.Core.GeneratorDataByRepository
         string GenerateChineseMobileNumber();
         string GenerateChineseMobilePrefix();
         string GenerateChinesePersonalSigner();
+        string GenerateChineseJob();
         string GenerateEmail();
     }
 
@@ -285,6 +292,13 @@ namespace DataGenerationFramework.Core.GeneratorDataByRepository
         public string GenerateChinesePersonalSigner()
         {
             var list = _nameRepository.GetChinesePersonalSigner();
+            Random r = RandomHelper.GenNewRandomSeed();
+            return list[r.Next(0, list.Count)];
+        }
+
+        public string GenerateChineseJob()
+        {
+            var list = _nameRepository.GetChineseJob();
             Random r = RandomHelper.GenNewRandomSeed();
             return list[r.Next(0, list.Count)];
         }
