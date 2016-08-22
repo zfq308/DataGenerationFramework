@@ -234,6 +234,7 @@ namespace DataGenerationFramework.Core
         HumanData_ChineseMobileNumber = 106,
         HumanData_ChineseRandomMobileNumber = 107,
         HumanData_ChinesePersonalSigner = 108,
+        HumanData_ChineseJob=109,
 
         GEOData_Address = 200,
         GEOData_ChineseAddress = 201,
@@ -323,6 +324,8 @@ namespace DataGenerationFramework.Core
                     return gen.GetLanguage_ChineseTwoWord();
                 case EnumStringType.Language_ChineseFourWord:
                     return gen.GetLanguage_ChineseFourWord();
+                case EnumStringType.HumanData_ChineseJob:
+                    return gen.GetHumanData_ChineseJob();
                 default:
                     return "";
             }

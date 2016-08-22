@@ -108,7 +108,9 @@
     <EmbeddedResource Include="Data\Language\ChineseTwoWords.txt" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="UploadNugetPackage.bat" />
+    <None Include="UploadNugetPackage.bat">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <EmbeddedResource Include="Data\HumanData\PersonalSigner.txt" />
     <EmbeddedResource Include="Data\HumanData\ChineseSchoolName.txt" />
     <EmbeddedResource Include="Data\Business\ChineseCommodities.txt" />

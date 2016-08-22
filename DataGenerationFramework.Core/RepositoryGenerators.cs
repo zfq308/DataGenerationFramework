@@ -108,6 +108,14 @@ namespace DataGenerationFramework.Core
             return generator2.GenerateChinesePersonalSigner();
         }
 
+
+        public string GetHumanData_ChineseJob()
+        {
+            var generator2 = container.Resolve<IHumanDataGenerator>();
+            return generator2.GenerateChineseJob();
+
+        }
+
         #endregion
 
         #region GEO Address
